@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"git.path": "C:/Program Files (x86)/Git/bin",
+	"jshint.enable": false,
+	"jshint.options": {
+		"esversion": 6
+	}
+}

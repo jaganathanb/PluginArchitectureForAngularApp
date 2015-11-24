@@ -1,0 +1,22 @@
+<header id="header">
+	<div id="logo-group">
+		<div class="hamburger-separator pull-left"></div>
+
+		<!-- PLACE YOUR LOGO HERE -->
+		<span id="logo" class="pull-left">
+			<a ng-click="core.navigate('home')" >
+				<div class="spa-logo" alt="SPALogo"></div>
+			</a> 
+		</span>
+		<!-- END LOGO PLACEHOLDER -->
+
+		<div id="application_name" class="pull-left ">{{'CORE.DASHBOARD.HEADER.APP_NAME' | translate}}</div>
+	</div>
+
+	<!-- pulled right: nav area -->
+	<div id="header_right" class="pull-right">
+		<span>{{'CORE.DASHBOARD.HEADER.DATE_DISPLAY' | translate: {date: core.today} }}</span>
+		<!--<p ng-click="core.changeCulture()">Current Culture {{core.language}}</p>-->
+	</div>
+	<!-- end pulled right: nav area -->
+</header>

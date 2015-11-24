@@ -1,0 +1,11 @@
+{
+	"LOCALE": {
+		"TITLE": "本地化模块",
+		"MESSAGE": "这是按需加载本地化模块！",
+		"LOCALES": "选择区域设置：",
+		"CURRENCY": "当地货币 => {{curr | currency}}",
+		"CURRENT_DATE": "当前日期 => {{dt | date }}",
+		"NUMBER": "号码 => {{num | number}}",
+		"ACTIVE_LOCALE": "活动区域设置ID是 => {{id}}"
+	}
+}

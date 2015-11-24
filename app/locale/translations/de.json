@@ -1,0 +1,11 @@
+{
+	"LOCALE": {
+		"TITLE": "locale Modul",
+		"MESSAGE": "Dies ist Locale-Modul bei Bedarf geladen!",
+		"LOCALES": "Wählen Sie das Gebietsschema:",
+		"CURRENCY": "Die lokale Währung => {{curr | currency}}",
+		"CURRENT_DATE": "Das aktuelle Datum => {{dt | date }}",
+		"NUMBER": "Die Nummer => {{num | number}}",
+		"ACTIVE_LOCALE": "Die aktive Gebietsschema-ID ist => {{id}}"
+	}
+}

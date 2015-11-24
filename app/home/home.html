@@ -1,0 +1,17 @@
+<div class="panel panel-default home">
+	<div class="panel-heading">
+		<span class="title">
+			{{'HOME.TITLE' | translate}}
+		</span>
+	</div>
+	<div class="panel-body">
+		<p class="message">
+			{{'HOME.MESSAGE' | translate}}
+		</p>
+		<ul>
+			<li ng-repeat="usage in vm.usages.details">
+				<span ng-bind="usage"></span>
+			</li>
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+{
+	"LOCALE": {
+		"TITLE": "Locale Module",
+		"MESSAGE": "This is Locale module loaded on demand!",
+		"LOCALES": "Select the Locale:",
+		"CURRENCY": "The local Currency => {{curr | currency}}",
+		"CURRENT_DATE": "The current Date => {{dt | date }}",
+		"NUMBER": "The Number => {{num | number}}",
+		"ACTIVE_LOCALE": "The active locale id is => {{id}}"
+	}
+}

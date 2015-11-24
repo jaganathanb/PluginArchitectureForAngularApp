@@ -1,0 +1,6 @@
+{
+	"HOME": {
+		"TITLE": "Home Module",
+		"MESSAGE": "This is Home module loaded on demand!"
+	}
+}

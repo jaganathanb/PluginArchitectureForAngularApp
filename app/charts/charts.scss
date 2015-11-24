@@ -1,0 +1,34 @@
+.charts {
+	.title{
+		font-weight: 400;
+	}
+
+	.message {
+		font-weight: 600;
+	}
+	
+	.axis path, .axis line {
+            fill: none;
+            stroke: black;
+            shape-rendering: crispEdges;
+        }
+		
+        .bar {
+            fill: steelblue;
+        }
+        
+        .axis path,
+        .axis line {
+        fill: none;
+        stroke: #777;
+        }
+
+        .axis text {
+        font-family: 'Arial';
+        font-size: 13px;
+        }
+
+        .tick {
+        stroke-dasharray: 1;
+        }
+}

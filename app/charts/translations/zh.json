@@ -1,0 +1,7 @@
+{
+	"CHARTS": {
+		"TITLE": "图表模块",
+		"MESSAGE": "这是按需加载图表模块！",
+		"DATE": "{{date | date}}"
+	}
+}

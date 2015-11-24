@@ -1,0 +1,20 @@
+[
+	{
+		"name": "Charts",
+		"namespace": "Core",
+		"path": "charts",
+		"url": "/",
+		"templateUrl": "charts/charts.html",
+		"controller": "ChartsController",
+		"controllerAs": "vm",
+		"isPublicRoute": false,
+		"isDev": true,
+		"menuItem": {
+			"title": "CORE.DASHBOARD.NAVIGATION.CHARTS",
+			"url": "charts",
+			"tooltip": "Click here for charts screen",
+			"class": "glyphicon glyphicon-picture",
+			"active": false
+		}
+	}
+]

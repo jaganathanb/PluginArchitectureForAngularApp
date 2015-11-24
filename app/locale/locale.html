@@ -1,0 +1,21 @@
+<div class="panel panel-default home">
+	<div class="panel-heading">
+		<span class="title">
+			{{'LOCALE.TITLE' | translate}}
+		</span>
+	</div>
+	<div class="panel-body">
+		<div>
+			<p class="message">
+			{{'LOCALE.MESSAGE' | translate}}
+		</p>
+			<p>{{'LOCALE.LOCALES' | translate}}
+				<select ng-model="vm.selectedLocale" ng-options="key as value for (key, value) in vm.availableLocales" ng-change="vm.changeLocale()"></select>
+			</p>
+			<p>{{'LOCALE.ACTIVE_LOCALE' | translate: {id: vm.selectedLocale} }}</p>
+			<p>{{'LOCALE.NUMBER' | translate: {num: 1234567890} }}</p>
+			<p>{{'LOCALE.CURRENT_DATE' | translate: {dt: vm.today} }}</p>
+			<p>{{'LOCALE.CURRENCY' | translate: {curr: 1000000} }}</p>
+		</div>
+	</div>
+</div>

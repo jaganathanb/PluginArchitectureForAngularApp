@@ -1,0 +1,23 @@
+{
+	"CORE": {
+		"LOGIN": {
+			"TITLE": "Login",
+			"SIGN_IN": "Sign In"
+		},
+		"DASHBOARD": {
+			"NAVIGATION":{
+				"HOME": "Zuhause",
+				"CHARTS": "Charts",
+				"LOCALE": "Schauplatz",
+				"LOGOUT": "Abmelden"
+			},
+			"FOOTER": {
+				"COPY_RIGHT": "Copyright © 2015 Jaganathan B"
+			},
+			"HEADER": {
+				"APP_NAME": "SPA-Vorlage mit ES6 + Angularjs + Webpack",
+				"DATE_DISPLAY": "{{date|date}}"
+			}
+		}
+	}
+}

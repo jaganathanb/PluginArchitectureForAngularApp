@@ -1,0 +1,73 @@
+[
+    {
+        "name": "Home",
+        "namespace": "Core",
+        "path": "home",
+        "url": "/",
+        "templateUrl": "home/home.html",
+        "controller": "HomeController",
+        "controllerAs": "vm",
+        "isPublicRoute": false
+    },
+    {
+        "name": "Home",
+        "namespace": "Core",
+        "path": "home",
+        "url": "/home",
+        "templateUrl": "home/home.html",
+        "controller": "HomeController",
+        "controllerAs": "vm",
+        "isPublicRoute": false,
+        "menuItem": {
+            "title": "CORE.DASHBOARD.NAVIGATION.HOME", 
+            "url": "home", 
+            "tooltip": "Click here for home screen", 
+            "class": "glyphicon glyphicon-home",
+            "active": true
+        }
+    },
+    {
+        "name": "Charts",
+        "namespace": "Core",
+        "path": "charts",
+        "url": "/charts",
+        "templateUrl": "charts/charts.html",
+        "controller": "ChartsController",
+        "controllerAs": "vm",
+        "isPublicRoute": false,
+        "menuItem": {
+            "title": "CORE.DASHBOARD.NAVIGATION.CHARTS", 
+            "url": "charts", 
+            "tooltip": "Click here for charts screen", 
+            "class": "glyphicon glyphicon-picture",
+            "active": false
+        }
+    },
+    {
+        "name": "Locale",
+        "namespace": "Core",
+        "path": "locale",
+        "url": "/locale",
+        "templateUrl": "locale/locale.html",
+        "controller": "LocaleController",
+        "controllerAs": "vm",
+        "isPublicRoute": false,
+        "menuItem": {
+            "title": "CORE.DASHBOARD.NAVIGATION.LOCALE", 
+            "url": "locale", 
+            "tooltip": "Click here for locale screen", 
+            "class": "glyphicon glyphicon-globe",
+            "active": false
+        }
+    },
+    {
+        "name": "Unauthorized",
+        "namespace": "Core",
+        "path": "unauthorized",
+        "url": "/unauthorized",
+        "isPublicRoute": false,
+        "templateUrl": "unauthorized/unauthorized.html",
+        "controller": "UnauthorizedController",
+        "controllerAs": "vm"
+    }
+]

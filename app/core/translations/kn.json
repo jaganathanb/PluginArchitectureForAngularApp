@@ -1,0 +1,23 @@
+{
+	"CORE": {
+		"LOGIN": {
+			"TITLE": "Login",
+			"SIGN_IN": "Sign In"
+		},
+		"DASHBOARD": {
+			"NAVIGATION":{
+				"HOME": "ಮುಖಪುಟ",
+				"CHARTS": "ಚಾರ್ಟ್ಸ್",
+				"LOCALE": "ಲೊಕೇಲ್",
+				"LOGOUT": "ನಿರ್ಗಮಿಸಬೇಕಾಗುತ್ತದೆ"
+			},
+			"FOOTER": {
+				"COPY_RIGHT": "ಕೃತಿಸ್ವಾಮ್ಯ © 2015 Jaganathan B"
+			},
+			"HEADER": {
+				"APP_NAME": "ES6 + ಕೋನೀಯ + Webpack ಐಪಿಎಲ್ ಟೆಂಪ್ಲೇಟು",
+				"DATE_DISPLAY": "{{date|date}}"
+			}
+		}
+	}
+}

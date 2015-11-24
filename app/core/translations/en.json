@@ -1,0 +1,24 @@
+{
+	"CORE": {
+		"LOGIN": {
+			"TITLE": "Login",
+			"SIGN_IN": "Sign In"
+		},
+		"DASHBOARD": {
+			"NAVIGATION":{
+				"HOME": "Home",
+				"CHARTS": "Charts",
+				"LOCALE": "Locale",
+				"LOGOUT": "Logout"
+			},
+			"FOOTER": {
+				"COPY_RIGHT": "Copyright © 2015 Jaganathan B"
+			},
+			"HEADER": {
+				"APP_NAME": "SPA Template with ES6 + AngularJS + Webpack",
+				"DATE_DISPLAY": "{{date|date}}"
+			}
+		},
+		"UNAUTHORIZE": "Please get license before using the {{moduleName}} module."
+	}
+}

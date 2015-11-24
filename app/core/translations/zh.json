@@ -1,0 +1,23 @@
+{
+	"CORE": {
+		"LOGIN": {
+			"TITLE": "Login",
+			"SIGN_IN": "Sign In"
+		},
+		"DASHBOARD": {
+			"NAVIGATION":{
+				"HOME": "家",
+				"CHARTS": "图表",
+				"LOCALE": "语言环境",
+				"LOGOUT":"登出"
+			},
+			"FOOTER": {
+				"COPY_RIGHT": "版权所有©2015年Jaganathan B"
+			},
+			"HEADER": {
+				"APP_NAME": "SPA模板与ES6+ AngularJS+ WebPACK中",
+				"DATE_DISPLAY": "{{date|date}}"
+			}
+		}
+	}
+}

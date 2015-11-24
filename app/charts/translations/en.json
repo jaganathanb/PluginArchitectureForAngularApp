@@ -1,0 +1,7 @@
+{
+	"CHARTS": {
+		"TITLE": "Charts Module",
+		"MESSAGE": "This is Charts module loaded on demand!",
+		"DATE": "{{date | date}}"
+	}
+}

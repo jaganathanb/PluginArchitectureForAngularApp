@@ -1,0 +1,23 @@
+{
+	"CORE": {
+		"LOGIN": {
+			"TITLE": "Login",
+			"SIGN_IN": "Sign In"
+		},
+		"DASHBOARD": {
+			"NAVIGATION":{
+				"HOME": "முகப்பு",
+				"CHARTS": "வரைபடங்கள்",
+				"LOCALE": "கலாச்சாரம்",
+				"LOGOUT":"வெளியேறு"
+			},
+			"FOOTER": {
+				"COPY_RIGHT": "காப்புரிமை © 2015 Jaganathan B"
+			},
+			"HEADER": {
+				"APP_NAME": "SPA மாதிரி வலைதளம் ES6 + AngularJS + Webpack",
+				"DATE_DISPLAY": "{{date|date}}"
+			}
+		}
+	}
+}
