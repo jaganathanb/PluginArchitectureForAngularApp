@@ -17,7 +17,7 @@ var Charts = angular
 		'Common'])
 	.controller('ChartsController', ChartsController)
 	.service('chartsService', ChartsService)
-	.service('d3Service', () => { return require('d3'); })
+	.service('d3Service', () => { return window.d3; })
 	.directive('barChart', BarChart.directiveFn)
 	.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
 		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.bundle.js');

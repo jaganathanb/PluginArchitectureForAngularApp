@@ -21,7 +21,8 @@ class AuthService {
 	}
 
 	getSession() {
-		return SERVICES.get(AuthService).$cookieStore.get('session');
+		//return SERVICES.get(AuthService).$cookieStore.get('session');
+		return JSON.parse(localStorage.getItem('session'));
 	}
 
 	getModules() {
@@ -41,11 +42,12 @@ class AuthService {
 
 		_.merge(existsSettings, settings);
 		
-        services.$cookieStore.put('session', settings);
+        //services.$cookieStore.put('session', settings);
+		localStorage.setItem('session', JSON.stringify(settings));
 	}
 
 	clearSession() {
-		SERVICES.get(AuthService).$cookieStore.remove('session');
+		localStorage.clear('session');
     }
 
 }

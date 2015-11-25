@@ -1,29 +1,21 @@
 [
 	{
-		"name": "Charts",
+		"name": "Unauthorized",
 		"namespace": "Core",
-		"path": "charts",
 		"url": "/",
-		"controller": "ChartsController",
+		"controller": "UnauthorizedController",
 		"controllerAs": "vm",
 		"isPublicRoute": false,
 		"isDev": true
 	},
 	{
-        "name": "Charts",
-        "namespace": "Core",
-        "path": "charts",
-        "url": "/charts",
-        "controller": "ChartsController",
-        "controllerAs": "vm",
-        "isPublicRoute": false,
-        "menuItem": {
-            "title": "CORE.DASHBOARD.NAVIGATION.CHARTS", 
-            "url": "charts", 
-            "tooltip": "Click here for charts screen", 
-            "class": "glyphicon glyphicon-picture",
-            "active": false
-        },
+		"name": "Unauthorized",
+		"namespace": "Core",
+		"url": "/unauthorized",
+		"controller": "UnauthorizedController",
+		"controllerAs": "vm",
+		"isPublicRoute": false,
+		"isDev": false,
         "dependencies": ["angular", 
                 "angular-route", 
                 "angular-resource",
@@ -41,8 +33,6 @@
                 "jquery", 
                 "bootstrap/dist/css/bootstrap.min.css",
                 "bootstrap",
-                "d3",
-                "moment",
                 "common"]
-    }
+	}
 ]

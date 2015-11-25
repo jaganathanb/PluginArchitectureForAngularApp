@@ -4,7 +4,7 @@ let configs = {
     
   }],
 
-  ROUTES: require('./routes').default,
+  ROUTES: require('../routes').default,
 
   DEBUG_MODE: ['$compileProvider', 'DEBUG_MODE', ($compileProvider, DEBUG_MODE) => {
     if (!DEBUG_MODE) {

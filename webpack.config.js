@@ -2,47 +2,28 @@
 /* global __dirname */
 var path = require('path'),
     webpack = require('webpack'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin');
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    appName = 'core',
+    config;
 
-module.exports = {
+config = {
     watch: true,
     entry: {
-        core: './app/core',
         'en':'angular-i18n/en.js',
         'ta':'angular-i18n/ta.js',
         'kn': 'angular-i18n/kn.js',
         'zh': 'angular-i18n/zh.js',
-        'de': 'angular-i18n/de.js',
-        vendor: ['angular', 
-                'angular-route', 
-                'angular-resource',
-                'angular-cookies', 
-                'angular-animate', 
-                'angularjs-toaster',
-                'angular-sanitize',
-                'angular-translate',
-                'angular-dynamic-locale/dist/tmhDynamicLocale',
-                'angular-translate/dist/angular-translate-storage-local/angular-translate-storage-local.js',
-                'angular-translate/dist/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
-                'angular-translate/dist/angular-translate-handler-log/angular-translate-handler-log.js',
-                'angularjs-toaster/toaster.css', 
-                'lodash',
-                'jquery', 
-                'bootstrap/dist/css/bootstrap.min.css',
-                'bootstrap',
-                'd3',
-                'moment',
-                'common']
+        'de': 'angular-i18n/de.js'
     },
     output: {
         path: path.join(__dirname, "app"),
-        filename: "[name].[hash].bundle.js",
+        filename: "[name].bundle.js",
         chunkFilename: "[name].[hash].module.js",
         publicPath: './'
     },
     module: {
         loaders: [
-            { test: /.js?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015'] } },
+            { test: /.js?$/, loader: 'babel-loader', exclude: /(node_modules|webpack.config.js|gulpfile.js)/, query: { presets: ['es2015'] } },
             { test: /\.json$/, loader: 'json' },
             { test: /\.html$/, loader: "ng-cache-loader" },
             { test: /\.css$/, loader: 'style-loader!css-loader!autoprefixer-loader' },
@@ -70,9 +51,13 @@ module.exports = {
         }),
         new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
         new webpack.ContextReplacementPlugin(/^\.\/locale$/, /en|ta/),
-        new ExtractTextPlugin("app.css", {allChunks: true}) /* ,
+        new ExtractTextPlugin("app.css") /* ,
         new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false }),
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(true)*/
     ]
 };
+
+config['entry'][appName] = './app/' + appName;
+
+module.exports = config;
