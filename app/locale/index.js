@@ -1,15 +1,22 @@
 /* global angular */
 
 import LocaleController from './locale.controller';
+import Routes from './routes';
 
 require('./locale.html');
 require('./locale.scss');
 
 var Locale = angular
-			.module('Core.Locale', [])
-			.controller('LocaleController', LocaleController)
-			.config(['$translateProvider', ($translateProvider) => {
-				//$translateProvider.translations(LOCALES.preferredLocale, require('../../translations/' +LOCALES.preferredLocale + '/locale.json' ));
-			}]);
-			
+	.module('Core.Locale', ['ngRoute', 'ngResource',
+		'ngSanitize',
+		'ngCookies',
+		'toaster',
+		'ngAnimate',
+		'Common'])
+	.controller('LocaleController', LocaleController)
+	.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
+		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.bundle.js');
+	}])
+	.config(Routes);
+
 export default Locale;

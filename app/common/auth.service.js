@@ -17,7 +17,7 @@ class AuthService {
 
 	hasAccessToRoute(routeToCheck) {
 		let session = this.getSession();
-		return session && (session.modules || []).find(route => route.url === routeToCheck);
+		return session && (session.modules || []).find(module => module.name.toLowerCase() === routeToCheck);
 	}
 
 	getSession() {
@@ -30,7 +30,9 @@ class AuthService {
 		return services.$http.get('http://localhost:1234/api/core/modules').then((response) => {
 			let menuItems = [];
 			for (var index = 0; index < response.data.length; index++) {
-				menuItems.push(response.data[index].menuItem);
+				for (var j = 0; j < response.data[index].menus.length; j++) {
+					menuItems.push(response.data[index].menus[j]);
+				}
 			}
 			return { menus: menuItems.filter(menu => menu), modules: response.data };
 		});

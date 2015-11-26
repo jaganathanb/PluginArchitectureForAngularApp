@@ -7,31 +7,12 @@ controller: 'ChartsController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
- if (false || authService.hasAccessToRoute($location.path())) {
+ if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
 require('charts');
 moduleProvider.load({ name: 'Core.Charts', path: 'charts' });
 defered.resolve();
 }, 'charts');
- } else { 
- defered.reject(); 
- $location.path('/unauthorized');  } 
- return defered.promise; 
- }] } 
-})
-
-.when('/',
-{ template: require('home/home.html'),
-controller: 'HomeController',
-controllerAs:'vm',
-resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
-var defered = $q.defer();
- if (false || authService.hasAccessToRoute($location.path())) {
- require.ensure([], function () { 
-require('home');
-moduleProvider.load({ name: 'Core.Home', path: 'home' });
-defered.resolve();
-}, 'home');
  } else { 
  defered.reject(); 
  $location.path('/unauthorized');  } 
@@ -45,7 +26,7 @@ controller: 'HomeController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
- if (false || authService.hasAccessToRoute($location.path())) {
+ if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
 require('home');
 moduleProvider.load({ name: 'Core.Home', path: 'home' });
@@ -57,14 +38,14 @@ defered.resolve();
  return defered.promise; 
  }] } 
 })
-
+.when('/', { redirectTo: '/home' })
 .when('/locale',
 { template: require('locale/locale.html'),
 controller: 'LocaleController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
- if (false || authService.hasAccessToRoute($location.path())) {
+ if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
 require('locale');
 moduleProvider.load({ name: 'Core.Locale', path: 'locale' });

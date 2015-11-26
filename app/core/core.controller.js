@@ -45,6 +45,8 @@ class CoreController {
 					services.$route.reload();
 				});			
 			});
+		} else {
+			services.$location.path('/unauthorized');
 		}
 	}
 
