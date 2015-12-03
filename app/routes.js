@@ -2,15 +2,15 @@
 let Routes = function ($routeProvider, $provide) {
 $routeProvider
 .when('/charts',
-{ template: require('charts/charts.html'),
+{ template: require('./charts/charts.html'),
 controller: 'ChartsController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
  if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
-require('charts');
-moduleProvider.load({ name: 'Core.Charts', path: 'charts' });
+require('./charts');
+moduleProvider.load({ name: 'Core.Charts', path: './charts' });
 defered.resolve();
 }, 'charts');
  } else { 
@@ -21,15 +21,15 @@ defered.resolve();
 })
 
 .when('/home',
-{ template: require('home/home.html'),
+{ template: require('./home/home.html'),
 controller: 'HomeController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
  if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
-require('home');
-moduleProvider.load({ name: 'Core.Home', path: 'home' });
+require('./home');
+moduleProvider.load({ name: 'Core.Home', path: './home' });
 defered.resolve();
 }, 'home');
  } else { 
@@ -40,15 +40,15 @@ defered.resolve();
 })
 .when('/', { redirectTo: '/home' })
 .when('/locale',
-{ template: require('locale/locale.html'),
+{ template: require('./locale/locale.html'),
 controller: 'LocaleController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
  if (true || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
-require('locale');
-moduleProvider.load({ name: 'Core.Locale', path: 'locale' });
+require('./locale');
+moduleProvider.load({ name: 'Core.Locale', path: './locale' });
 defered.resolve();
 }, 'locale');
  } else { 
@@ -59,15 +59,15 @@ defered.resolve();
 })
 
 .when('/unauthorized',
-{ template: require('unauthorized/unauthorized.html'),
+{ template: require('./unauthorized/unauthorized.html'),
 controller: 'UnauthorizedController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer();
  if (false || authService.hasAccessToRoute($location.path())) {
  require.ensure([], function () { 
-require('unauthorized');
-moduleProvider.load({ name: 'Core.Unauthorized', path: 'unauthorized' });
+require('./unauthorized');
+moduleProvider.load({ name: 'Core.Unauthorized', path: './unauthorized' });
 defered.resolve();
 }, 'unauthorized');
  } else { 

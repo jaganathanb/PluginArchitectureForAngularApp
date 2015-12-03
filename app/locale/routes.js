@@ -2,8 +2,8 @@
 let Routes = function ($routeProvider, $provide) {
 $routeProvider
 .when('/',
-{ template: require('./charts.html'),
-controller: 'ChartsController',
+{ template: require('./locale.html'),
+controller: 'LocaleController',
 controllerAs:'vm'
 })
 .otherwise({redirectTo: '/unauthorized'});

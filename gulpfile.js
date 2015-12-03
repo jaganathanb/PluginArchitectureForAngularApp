@@ -106,7 +106,7 @@ function getRoutesJSFile(json) {
     for (var moduleIndex = 0; json.routes.length > moduleIndex; moduleIndex++) {
         var route = json.routes[moduleIndex],
             name = json.name.toLowerCase();
-            
+
         if (!route.isDev) {
             modules.push(json);
             jsFileContent += '\n.when(\'' + route.url + '\',\n' +
@@ -132,7 +132,7 @@ function getRoutesJSFile(json) {
             }
 
             jsFileContent += '})\n';
-            
+
             if (route.isDefault) {
                 jsFileContent += '.when(\'/\', { redirectTo: \'' + route.url  +'\' })';
             }
@@ -144,5 +144,3 @@ function getRoutesJSFile(json) {
         modules: modules
     };
 }
-
-
