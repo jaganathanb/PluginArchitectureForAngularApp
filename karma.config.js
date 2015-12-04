@@ -7,13 +7,15 @@ module.exports = function(config) {
 
         files: ['webpack.karma.config.js'],
 
+        browsers: ['Chrome'],
+
         // frameworks to use
-        frameworks: ['mocha', 'es6-shim', 'phantomjs-shim'],
+        frameworks: ['mocha', 'es6-shim', 'phantomjs-shim', 'sinon'],
 
         preprocessors: {
             // only specify one entry point
             // and require all tests in there
-            'webpack.karma.config.js': ['webpack'],
+            'webpack.karma.config.js': ['webpack', 'sourcemap'],
             './app/**/*.js': ['coverage']
         },
 
@@ -22,7 +24,7 @@ module.exports = function(config) {
         reporters: ['spec', 'coverage', 'progress'],
 
         webpack: {
-            devtool: 'eval',
+            devtool: 'inline-source-map',
             module: {
                 loaders: [{
                     test: /\.js?$/,
@@ -74,14 +76,14 @@ module.exports = function(config) {
             require("karma-webpack"),
             require("istanbul-instrumenter-loader"),
             require("karma-mocha"),
+            require("karma-sinon"),
             require("karma-coverage"),
             require("karma-phantomjs-launcher"),
             require("karma-chrome-launcher"),
             require("karma-spec-reporter"),
             require("karma-es6-shim"),
-            require("karma-phantomjs-shim")
-        ],
-
-        browsers: ['PhantomJS']
+            require("karma-phantomjs-shim"),
+            require("karma-sourcemap-loader")
+        ]
     });
 };

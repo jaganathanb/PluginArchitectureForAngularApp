@@ -2,7 +2,7 @@
 const SERVICES = new WeakMap();
 
 class CoreController {
-	constructor($scope, $location, $window, $timeout, $route, $translate, authService, localeService, toaster, momentService) {
+	constructor($scope, $location, $window, $timeout, $route, $translate, authService, localeService, momentService) {
 		SERVICES.set(CoreController, {
 			$scope: $scope,
 			$location: $location,
@@ -12,7 +12,6 @@ class CoreController {
 			$translate: $translate,
 			authService: authService,
 			localeService: localeService,
-			toaster: toaster,
 			moment: momentService
 		});
 
@@ -28,22 +27,22 @@ class CoreController {
 		if (settings = services.authService.getSession()) {
 
 			services.localeService.setLocales(settings.locales, settings.preferredLocale);
-			
+
 			services.localeService.setLocaleByDisplayName(settings.preferredLocale, require('./translations/' + settings.preferredLocale + '.json')).then(() => {
-			
+
 				this.language = services.localeService.getLocaleDisplayName();
 				let path = services.$location.path().replace(/\//ig, '');
 				settings.menus.forEach(function(menu) {
-					menu.active = menu.url === path || (path === "" && menu.url === "home") || path === 'unauthorized' && menu.url === 'home';		
+					menu.active = menu.url === path || (path === "" && menu.url === "home") || path === 'unauthorized' && menu.url === 'home';
 				});
-					
-				this.navItems = settings.menus;	
-				
+
+				this.navItems = settings.menus;
+
 				this.loggedIn = true;
-				
+
 				services.$timeout(() => {
 					services.$route.reload();
-				});			
+				});
 			});
 		} else {
 			services.$location.path('/unauthorized');
@@ -66,30 +65,30 @@ class CoreController {
 		services.authService.login(this.username, this.password, (response) => {
 
 			if (response.success) {
-				
+
 				services.authService.updateSession({username: this.username, password: this.password});
 
 				services.localeService.setLocales(response.locales, response.preferredLocale);
-			
+
 				services.localeService.setLocaleByDisplayName(response.preferredLocale, require('./translations/' + response.preferredLocale + '.json')).then(() => {
 					this.language = services.localeService.getLocaleDisplayName();
-	
+
 					services.authService.getModules().then((data) => {
 						this.navItems = data.menus || [];
-						this.navItems.push({title: "CORE.DASHBOARD.NAVIGATION.LOGOUT", 
-								url: "logout", 
-								tooltip: "Click here log out", 
+						this.navItems.push({title: "CORE.DASHBOARD.NAVIGATION.LOGOUT",
+								url: "logout",
+								tooltip: "Click here log out",
 								'class': "glyphicon glyphicon-log-out"});
-										
+
 						let path = services.$location.path().replace(/\//ig, '');
 						this.navItems.forEach(function(menu) {
-							menu.active = menu.url === path || (path === "" && menu.url === "home") || path === 'unauthorized' && menu.url === 'home';	
+							menu.active = menu.url === path || (path === "" && menu.url === "home") || path === 'unauthorized' && menu.url === 'home';
 						});
-						
+
 						services.authService.updateSession({ modules: data.modules, menus: this.navItems, locales: response.locales, preferredLocale: response.preferredLocale});
-						
+
 						this.loggedIn = response.success;
-	
+
 						services.$timeout(() => {
 							services.$location.path('/').replace();
 						});
@@ -110,7 +109,7 @@ class CoreController {
 		} else {
 			let menu = this.navItems.find(m => m.url === moduleName),
 				activeMenu = this.navItems.find(m => m.active === true);
-			
+
 			activeMenu.active = false;
 			menu.active = true;
 
@@ -125,6 +124,6 @@ class CoreController {
 	}
 }
 
-CoreController.$inject = ['$scope', '$location', '$window', '$timeout', '$route', '$translate', 'authService', 'localeService', 'toaster', 'momentService'];
+CoreController.$inject = ['$scope', '$location', '$window', '$timeout', '$route', '$translate', 'authService', 'localeService', 'momentService'];
 
 export default CoreController;
