@@ -2,7 +2,7 @@
 let Routes = function ($routeProvider, $provide) {
 $routeProvider
 .when('/charts',
-{ template: require('./charts/charts.html'),
+{ template: require('charts/charts.html'),
 controller: 'ChartsController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
@@ -21,7 +21,7 @@ defered.resolve();
 })
 
 .when('/home',
-{ template: require('./home/home.html'),
+{ template: require('home/home.html'),
 controller: 'HomeController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
@@ -40,7 +40,7 @@ defered.resolve();
 })
 .when('/', { redirectTo: '/home' })
 .when('/locale',
-{ template: require('./locale/locale.html'),
+{ template: require('locale/locale.html'),
 controller: 'LocaleController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
@@ -59,7 +59,7 @@ defered.resolve();
 })
 
 .when('/unauthorized',
-{ template: require('./unauthorized/unauthorized.html'),
+{ template: require('unauthorized/unauthorized.html'),
 controller: 'UnauthorizedController',
 controllerAs:'vm',
 resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
@@ -78,4 +78,4 @@ defered.resolve();
 })
 .otherwise({redirectTo: '/unauthorized'}); 
 '@ngInject'
-$provide.decorator("$exceptionHandler", function($delegate, $injector) { return function(exception, cause) { /*$delegate(exception, cause);*/$injector.get('toaster').pop({ type: 'error', title: exception.name, body: exception.message, showCloseButton: true}); };});};Routes.$inject = ['$routeProvider', '$provide'];export default Routes; 
+$provide.decorator("$exceptionHandler", function($delegate, $injector) { return function(exception, cause) { if (process.env.NODE_ENV === "dev")  { $delegate(exception, cause); }$injector.get('toaster').pop({ type: 'error', title: exception.name, body: exception.message, showCloseButton: true}); };});};Routes.$inject = ['$routeProvider', '$provide'];export default Routes; 

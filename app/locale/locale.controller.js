@@ -9,7 +9,7 @@ class LocaleController {
     SERVICES.set(LocaleController, {
       localeService: localeService,
       $translate: $translate,
-      $scope: $scope,
+      $scope: $scope
     });
 
     if (__DEV__) {
@@ -40,11 +40,11 @@ class LocaleController {
       localeTrans = {};
 
     services.localeService.setLocales(settings.locales, this.selectedLocale);
-    
+
     if (!__DEV__) {
       coreTrans = require('../core/translations/' + this.selectedLocale + '.json');
     }
-    
+
     localeTrans = require('./translations/' + this.selectedLocale + '.json');
 
     services.localeService.setLocaleByDisplayName(this.selectedLocale, _.merge(localeTrans, coreTrans, {})).then(() => {

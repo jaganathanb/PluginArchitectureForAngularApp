@@ -1,7 +1,7 @@
 let configs = {
 
-  RUN: ['$rootScope', '$location', 'authService', '$translate', ($rootScope, $location, authService) => {
-    
+  RUN: ['$rootScope', '$location', 'authService', '$translate', () => {
+
   }],
 
   ROUTES: require('../routes').default,
@@ -13,12 +13,8 @@ let configs = {
   }],
 
   TRANSLATION: ['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
-    tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.bundle.js');
+    tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
   }]
 }
 
 export default configs;
-
-
-
-

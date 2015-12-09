@@ -1,4 +1,3 @@
-/* global __DEV__ */
 /* global angular */
 
 import ChartsController from './charts.controller.js';
@@ -20,7 +19,7 @@ var Charts = angular
 	.service('d3Service', () => { return window.d3; })
 	.directive('barChart', BarChart.directiveFn)
 	.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
-		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.bundle.js');
+		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
 	}])
 	.config(Routes);
 

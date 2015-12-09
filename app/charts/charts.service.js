@@ -7,7 +7,7 @@ class ChartsService {
             $translate: $translate
         });
 	}
-    
+
     barChart() {
     let width = 1000,
         height = 500,
@@ -28,21 +28,21 @@ class ChartsService {
 
             let chartW = width - margin.left - margin.right,
                 chartH = height - margin.top - margin.bottom,
-                
+
                 x1 = services.d3.scale.ordinal()
-                .domain(barData.map(function(d, i){ return d.date; }))
+                .domain(barData.map(function(d){ return d.date; }))
                 .rangeRoundBands([0, chartW], .1),
-                
+
                 y1 = services.d3.scale.linear()
-                .domain([0, services.d3.max(barData, function(d, i){ return d.value; })])
+                .domain([0, services.d3.max(barData, function(d){ return d.value; })])
                 .range([chartH, 0]),
-                
+
                 xAxis = services.d3.svg.axis()
                 .scale(x1)
                 .tickSize(5)
                 .tickSubdivide(true)
                 .orient('bottom'),
-                
+
                 yAxis = services.d3.svg.axis()
                 .scale(y1)
                 .tickSize(5)
@@ -83,29 +83,29 @@ class ChartsService {
                 bars = svg.select('.chart-group')
                 .selectAll('.bar')
                 .data(barData);
-                
+
             bars.enter().append('rect')
                 .classed('bar', true)
                 .attr({x: chartW,
                     width: barW,
-                    y: function(d, i) { return y1(d.value); },
-                    height: function(d, i) { return chartH - y1(d.value) }
+                    y: function(d) { return y1(d.value); },
+                    height: function(d) { return chartH - y1(d.value) }
                  });
-                
+
             bars.transition()
                 .duration(duration)
                 .ease(ease)
                 .attr({
                     width: barW,
-                    x: function(d, i) { return x1(d.date) + gapSize/2; },
-                    y: function(d, i) { return y1(d.value); },
-                    height: function(d, i) { return chartH - y1(d.value); }
+                    x: function(d) { return x1(d.date) + gapSize/2; },
+                    y: function(d) { return y1(d.value); },
+                    height: function(d) { return chartH - y1(d.value); }
                 });
-                
+
             bars.exit().transition().style({opacity: 0}).remove();
 
             duration = 500;
-            
+
             svg.select('.container-group').selectAll('text.y-label').remove();
             svg.select('.container-group').append("text")
                     .classed('y-label', true)
@@ -115,8 +115,8 @@ class ChartsService {
                     .attr("dy", "1em")
                     .style("text-anchor", "middle")
                     .text("Value");
-                    
-                    
+
+
             svg.select('.container-group').selectAll('text.x-label').remove();
             svg.select('.container-group').append("text")
                 .classed('x-label', true)
@@ -126,7 +126,7 @@ class ChartsService {
 
         });
     }
-    
+
     chart.update = function (data) {
         if(svg) {
             svg.select('.chart-group')
@@ -135,7 +135,7 @@ class ChartsService {
                 .ease(ease);
         }
     }
-    
+
     chart.width = function(_x) {
         if (!arguments.length) return width;
         width = parseInt(_x);
@@ -157,7 +157,7 @@ class ChartsService {
         ease = _x;
         return this;
     };
-    
+
     return chart;
     }
 }

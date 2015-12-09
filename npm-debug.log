@@ -1,38 +1,91 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'run',
-1 verbose cli   'test' ]
-2 info using npm@2.5.1
-3 info using node@v0.12.0
-4 verbose run-script [ 'pretest', 'test', 'posttest' ]
-5 info pretest WebpackAngularBabel@1.0.0
-6 info test WebpackAngularBabel@1.0.0
-7 verbose unsafe-perm in lifecycle true
-8 info WebpackAngularBabel@1.0.0 Failed to exec test script
-9 verbose stack Error: WebpackAngularBabel@1.0.0 test: `karma start karma.config.js`
-9 verbose stack Exit status 1
-9 verbose stack     at EventEmitter.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\lifecycle.js:213:16)
-9 verbose stack     at EventEmitter.emit (events.js:110:17)
-9 verbose stack     at ChildProcess.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\spawn.js:14:12)
-9 verbose stack     at ChildProcess.emit (events.js:110:17)
-9 verbose stack     at maybeClose (child_process.js:1008:16)
-9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1080:5)
-10 verbose pkgid WebpackAngularBabel@1.0.0
-11 verbose cwd D:\Projects\AngularJS\waes6
-12 error Windows_NT 6.1.7601
-13 error argv "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "test"
-14 error node v0.12.0
-15 error npm  v2.5.1
-16 error code ELIFECYCLE
-17 error WebpackAngularBabel@1.0.0 test: `karma start karma.config.js`
-17 error Exit status 1
-18 error Failed at the WebpackAngularBabel@1.0.0 test script 'karma start karma.config.js'.
-18 error This is most likely a problem with the WebpackAngularBabel package,
-18 error not with npm itself.
-18 error Tell the author that this fails on your system:
-18 error     karma start karma.config.js
-18 error You can get their info via:
-18 error     npm owner ls WebpackAngularBabel
-18 error There is likely additional logging output above.
-19 verbose exit [ 1, true ]
+1 verbose cli   'link',
+1 verbose cli   'eslint-plugin-itron' ]
+2 info using npm@3.3.12
+3 info using node@v5.2.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData eslint-plugin-itron
+8 silly fetchNamedPackageData eslint-plugin-itron
+9 silly mapToRegistry name eslint-plugin-itron
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-itron
+13 verbose request uri https://registry.npmjs.org/eslint-plugin-itron
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 4:04:16 PM
+16 verbose request id 39ad5c5a915ad96b
+17 http request GET https://registry.npmjs.org/eslint-plugin-itron
+18 http 404 https://registry.npmjs.org/eslint-plugin-itron
+19 verbose headers { 'content-type': 'application/json',
+19 verbose headers   'cache-control': 'max-age=0',
+19 verbose headers   'content-length': '2',
+19 verbose headers   'accept-ranges': 'bytes',
+19 verbose headers   date: 'Wed, 09 Dec 2015 10:32:40 GMT',
+19 verbose headers   via: '1.1 varnish',
+19 verbose headers   age: '0',
+19 verbose headers   connection: 'keep-alive',
+19 verbose headers   'x-served-by': 'cache-sin6923-SIN',
+19 verbose headers   'x-cache': 'MISS',
+19 verbose headers   'x-cache-hits': '0',
+19 verbose headers   'x-timer': 'S1449657159.793431,VS0,VE220' }
+20 silly get cb [ 404,
+20 silly get   { 'content-type': 'application/json',
+20 silly get     'cache-control': 'max-age=0',
+20 silly get     'content-length': '2',
+20 silly get     'accept-ranges': 'bytes',
+20 silly get     date: 'Wed, 09 Dec 2015 10:32:40 GMT',
+20 silly get     via: '1.1 varnish',
+20 silly get     age: '0',
+20 silly get     connection: 'keep-alive',
+20 silly get     'x-served-by': 'cache-sin6923-SIN',
+20 silly get     'x-cache': 'MISS',
+20 silly get     'x-cache-hits': '0',
+20 silly get     'x-timer': 'S1449657159.793431,VS0,VE220' } ]
+21 silly fetchPackageMetaData Error: Registry returned 404 for GET on https://registry.npmjs.org/eslint-plugin-itron
+21 silly fetchPackageMetaData     at makeError (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+21 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:242:14)
+21 silly fetchPackageMetaData     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+21 silly fetchPackageMetaData     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:198:22)
+21 silly fetchPackageMetaData     at emitTwo (events.js:88:13)
+21 silly fetchPackageMetaData     at Request.emit (events.js:173:7)
+21 silly fetchPackageMetaData     at Request.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1082:10)
+21 silly fetchPackageMetaData     at emitOne (events.js:83:20)
+21 silly fetchPackageMetaData     at Request.emit (events.js:170:7)
+21 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1009:12)
+21 silly fetchPackageMetaData  error for eslint-plugin-itron { [Error: Registry returned 404 for GET on https://registry.npmjs.org/eslint-plugin-itron] pkgid: 'eslint-plugin-itron', statusCode: 404, code: 'E404' }
+22 silly rollbackFailedOptional Starting
+23 silly rollbackFailedOptional Finishing
+24 silly runTopLevelLifecycles Starting
+25 silly runTopLevelLifecycles Finishing
+26 silly install printInstalled
+27 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/eslint-plugin-itron
+27 verbose stack     at makeError (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+27 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:242:14)
+27 verbose stack     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+27 verbose stack     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:198:22)
+27 verbose stack     at emitTwo (events.js:88:13)
+27 verbose stack     at Request.emit (events.js:173:7)
+27 verbose stack     at Request.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1082:10)
+27 verbose stack     at emitOne (events.js:83:20)
+27 verbose stack     at Request.emit (events.js:170:7)
+27 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1009:12)
+28 verbose statusCode 404
+29 verbose pkgid eslint-plugin-itron
+30 verbose cwd D:\Projects\AngularJS\waes6
+31 error Windows_NT 6.1.7601
+32 error argv "C:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "link" "eslint-plugin-itron"
+33 error node v5.2.0
+34 error npm  v3.3.12
+35 error code E404
+36 error 404 Registry returned 404 for GET on https://registry.npmjs.org/eslint-plugin-itron
+36 error 404
+36 error 404 'eslint-plugin-itron' is not in the npm registry.
+36 error 404 You should bug the author to publish it (or use the name yourself!)
+36 error 404
+36 error 404 Note that you can also install from a
+36 error 404 tarball, folder, http url, or git url.
+37 verbose exit [ 1, true ]

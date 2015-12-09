@@ -1,4 +1,3 @@
-/* global angular */
 const SERVICES = new WeakMap();
 
 class BarChart {
@@ -22,7 +21,7 @@ class BarChart {
         });
     }
 
-    link(scope, element, attributes, controller, transcludeFn) {
+    link(scope, element) {
         let services = SERVICES.get(BarChart),
             chartEl = services.d3.select(element[0]),
             chart = services.chartsService.barChart(),
@@ -37,7 +36,7 @@ class BarChart {
             }
         });
 
-        scope.$watch('data', (newVal, oldVal) => {
+        scope.$watch('data', (newVal) => {
             if (newVal) {
                 for (var index = 0; scope.data[index]; index++) {
                     scope.data[index].date = services.$translate.instant('CHARTS.DATE', { date: scope.data[index].date });
@@ -46,13 +45,13 @@ class BarChart {
             }
         });
 
-        scope.$watch('height', (d, i) => {
+        scope.$watch('height', () => {
             if (scope.data) {
                 chartEl.call(chart.height(scope.height));
             }
         });
 
-        scope.$watch('width', (d, i) => {
+        scope.$watch('width', () => {
             if (scope.data) {
                 chartEl.call(chart.width(scope.width));
             }

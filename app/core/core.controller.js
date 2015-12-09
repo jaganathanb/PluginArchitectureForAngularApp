@@ -1,4 +1,3 @@
-/* global angular */
 const SERVICES = new WeakMap();
 
 class CoreController {
@@ -24,7 +23,7 @@ class CoreController {
 
 		this.today = new Date();
 
-		if (settings = services.authService.getSession()) {
+		if ((settings = services.authService.getSession())) {
 
 			services.localeService.setLocales(settings.locales, settings.preferredLocale);
 

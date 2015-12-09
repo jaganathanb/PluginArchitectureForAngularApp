@@ -112,7 +112,6 @@ describe('Core Controller', () => {
     describe("#changeCulture", () => {
         it("should set the new language", () => {
             ctrl.changeCulture();
-            //ctrl.language.should.equal('ta');
         });
 
         it("should have today property as date", () => {

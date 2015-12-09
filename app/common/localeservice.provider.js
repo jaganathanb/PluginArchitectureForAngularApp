@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular __DEV__ */
 let SERVICES = new WeakMap(),
     locales = Symbol(),
 	localeKeys = Symbol(),
@@ -25,20 +25,24 @@ class LocaleService {
 			this[displayNames].push(this[locales][key]);
 		}
 
+        //$translateProvider.useSanitizeValueStrategy('sanitize');
+
 		this.$get.$inject = ['$translate', '$rootScope', 'tmhDynamicLocale'];
 	}
 
 	init(localeName) {
 		let services = SERVICES.get(LocaleService);
 
-		if (services.DEBUG_MODE) {
+		if (__DEV__) {
 			services.$translateProvider.useMissingTranslationHandlerLog();// warns about missing translates
 		}
+
+        services.$translateProvider.useSanitizeValueStrategy('sanitize');
 
 		this[currentLocale] = localeName;
 	}
 
-	$get($translate, $rootScope, tmhDynamicLocale) {		
+	$get($translate, $rootScope, tmhDynamicLocale) {
 
 		return {
 			getLocaleDisplayName: () => {
@@ -61,13 +65,13 @@ class LocaleService {
 					services = SERVICES.get(LocaleService);
 
 				if (!locale) {
-					console.error('Locale name "' + locale[localeName] + '" is invalid');
+					console.warn('Locale name "' + locale[localeName] + '" is invalid');
 					return;
 				}
 
 				return tmhDynamicLocale.set(localeName).then(() => {
 					document.documentElement.setAttribute('lang', localeName);// sets "lang" attribute to html
-					
+
 					this[currentLocale] = localeName;// updating current locale
 
 					services.$translateProvider.translations(localeName, translations);
@@ -75,7 +79,7 @@ class LocaleService {
 					services.$translateProvider.preferredLanguage(localeName);
 
 					$translate.use(localeName);
-					
+
 					return localeName;
 				});
 			},

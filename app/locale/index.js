@@ -14,8 +14,8 @@ var Locale = angular
 		'ngAnimate',
 		'Common'])
 	.controller('LocaleController', LocaleController)
-	.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
-		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.bundle.js');
+	.config(['tmhDynamicLocaleProvider', (tmhDynamicLocaleProvider) => {
+		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
 	}])
 	.config(Routes);
 

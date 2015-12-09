@@ -8,18 +8,18 @@ class CoreView {
         this.scope = true;
         this.restrict = 'E'
         this.replace = true;
-        
+
         SERVICES.set(CoreView, {
             $compile: $compile,
             authService: authService
-        });        
+        });
     }
 
-    link(scope, element, attributes, controller, transcludeFn) {
+    link(scope, element) {
         let ele,
             services = SERVICES.get(CoreView);
 
-        scope.$watch('core.loggedIn', function (loggedIn) {
+        scope.$watch('core.loggedIn', function () {
             if (services.authService.getSession()) {
                 ele = angular.element('<section dashboard ng-include="\'core.dashboard.html\'"></section>');
             } else {
@@ -28,7 +28,7 @@ class CoreView {
             element.empty();
             services.$compile(ele)(scope);
             element.append(ele);
-            this.viewUpdated =  !this.viewUpdated;         
+            this.viewUpdated =  !this.viewUpdated;
         });
     }
 

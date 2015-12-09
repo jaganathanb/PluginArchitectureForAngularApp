@@ -15,7 +15,7 @@ class ModuleProvider {
 		this.$get.$inject = ['$q', '$rootScope'];
 	}
 
-	$get($q, $rootScope) {
+	$get() {
 		return {
 			load: (config) => {
 				let i, ii, k, invokeQueue, moduleName, moduleFn, invokeArgs, provider,
@@ -52,8 +52,7 @@ class ModuleProvider {
 							if (e.message) {
 								e.message += ' from ' + moduleName;
 							}
-							return e.message;
-							throw e;
+							throw e;							
 						}
 						moduleNames.pop();
 					}
