@@ -5,7 +5,7 @@
         "es6": true
     },
 
-    "plugins": ["babel"],
+    "plugins": ["myrules"],
 
     "ecmaFeatures": {
         "arrowFunctions": true,
@@ -33,7 +33,7 @@
     },
 
     "rules": {
-        "itron/directive-name-prefix": [2, "ipl"],
+        "myrules/directive-name-prefix": [0, "rule"],
         "no-alert": 0,
         "no-array-constructor": 0,
         "no-arrow-condition": 0,
