@@ -6,14 +6,14 @@ var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
-})); 
- 
+}));
+
 /* serves main page */
 app.get("/", function (req, res) {
 	res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.sendFile(__dirname + '/dist/index.html')
 });
- 
+
 /* serves all the static files */
 app.get(/(.+)$/, function (req, res) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
@@ -44,7 +44,7 @@ function getData(url, params) {
 			};
 			break;
 		case '/api/core/modules':
-			data = JSON.parse(require('fs').readFileSync("./app/modules.json"));
+			data = JSON.parse(require('fs').readFileSync("./shell/modules.json"));
 			break;
 		case '/api/core/login':
 			data = {

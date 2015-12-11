@@ -3,7 +3,7 @@ var modules = [],
   _ = require("lodash"),
   fs = require("fs");
 
-var fileNames = glob.sync('./app/**/modules.json', {});
+var fileNames = glob.sync('./shell/**/modules.json', {});
 
 for (var index = 0; index < fileNames.length; index++) {
   var moduleContent = fs.readFileSync(fileNames[index], 'utf-8');
@@ -15,9 +15,11 @@ for (var index = 0; index < fileNames.length; index++) {
   }
 }
 
+modules = _.flatten(modules);
+
 var deps = [];
-for (var index = 0; index < modules.length; index++) {
-  deps = deps.concat(modules[index].dependencies);
+for (var i = 0; i < modules.length; i++) {
+  deps = deps.concat(modules[i].dependencies);
 }
 
 module.exports = _.compact(_.uniq(deps));

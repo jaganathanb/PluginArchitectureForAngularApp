@@ -1,5 +1,4 @@
-var webpack = require("webpack"),
-    path = require('path');
+var webpack = require("webpack");
 
 module.exports = function(config) {
     config.set({
@@ -17,8 +16,7 @@ module.exports = function(config) {
             // only specify one entry point
             // and require all tests in there
             'webpack.karma.config.js': ['webpack', 'sourcemap'],
-            'plugins/**/*.js': ['coverage'],
-            'shell/**/*.js': ['coverage']
+            './src/**/*.js': ['coverage']
         },
 
         exclude: [],
@@ -27,14 +25,6 @@ module.exports = function(config) {
 
         webpack: {
             devtool: 'inline-source-map',
-            resolve: {
-                root: [
-                    path.join(__dirname, "node_modules"),
-                    path.join(__dirname, "plugins")
-                ],
-                extensions: ['', '.js', '.json', '.html', '.scss'],
-                modulesDirectories: ['node_modules', 'plugins']
-            },
             module: {
                 loaders: [{
                     test: /\.js?$/,
@@ -72,8 +62,7 @@ module.exports = function(config) {
                 new webpack.ProvidePlugin({
                     $: 'jquery',
                     jQuery: 'jquery'
-                }),
-                new webpack.ContextReplacementPlugin(/^\.\/locale$/, /en|ta/)
+                })
             ]
         },
 

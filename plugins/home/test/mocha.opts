@@ -1,0 +1,3 @@
+--compilers js:mocha-babel
+--ui bdd
+--reporter html

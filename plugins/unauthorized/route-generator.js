@@ -1,16 +1,16 @@
 var fs = require('fs'),
     glob = require('glob'),
     base = './',
-    appName = 'shell',
+    appName = 'unauthorized',
     sourcePath = '/src',
-    __DEV__ = false,
+    __DEV__ = true,
     routeStream = fs.createWriteStream(base + appName + sourcePath + '/routes.js'),
     modulesStream = fs.createWriteStream(base + appName + '/modules.json'),
     modules = [],
     content = '\'@ngInject\' \nlet Routes = function ($routeProvider, $provide) {' +
     '\n$routeProvider';
 
-glob(base + 'plugins/**/module.json', {}, function(err, fileNames) {
+glob(base + appName + '/**/module.json', {}, function(err, fileNames) {
     var obj = {};
     for (var index = 0; index < fileNames.length; index++) {
         var moduleContent = fs.readFileSync(fileNames[index], 'utf-8');
@@ -50,10 +50,10 @@ function getRoutesJSFile(json) {
         var route = json.routes[moduleIndex],
             name = json.name.toLowerCase();
 
-        if (!route.isDev) {
+        if (route.isDev) {
             modules.push(json);
             jsFileContent += '\n.when(\'' + route.url + '\',\n' +
-                '{ template: require(\'' + name + '/src/' + name + '.html\'),\n' +
+                '{ template: require(\'' + base + name + '.html\'),\n' +
                 'controller: \'' + route.controller + '\',\n' +
                 'controllerAs:\'' + route.controllerAs + '\'';
 

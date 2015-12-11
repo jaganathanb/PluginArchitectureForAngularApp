@@ -3,7 +3,7 @@ var path = require('path'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     Clean = require('clean-webpack-plugin'),
-    appName = 'shell',
+    appName = 'Charts',
     config;
 
 config = {
@@ -24,7 +24,7 @@ config = {
     eslint: {
         // community formatter
         formatter: require("eslint-friendly-formatter"),
-        configFile: './.eslintrc',
+        configFile: './'+ appName.toLowerCase() +'/.eslintrc',
         failOnError: true
     },
     module: {
@@ -67,15 +67,16 @@ config = {
     },
     resolve: {
         root: [
-            path.join(__dirname, "node_modules"),
-            path.join(__dirname, "plugins")
+            path.join(__dirname, "../node_modules"),
+            path.join(__dirname, "src"),
+            path.join(__dirname, "../")
         ],
         extensions: ['', '.js', '.json', '.html', '.scss'],
-        modulesDirectories: ['node_modules', 'plugins']
+        modulesDirectories: ['../node_modules', './src', '../']
     },
     plugins: [
         new webpack.DefinePlugin({
-            __DEV__: false
+            __DEV__: true
         }),
         new webpack.ProvidePlugin({
             "_": "lodash"
@@ -88,9 +89,10 @@ config = {
         new webpack.ContextReplacementPlugin(/^\.\/locale$/, /en|ta/),
         new ExtractTextPlugin("app.css"),
         new HtmlWebpackPlugin({
-            template: './index.html',
+            coreModule: 'Core.' + appName,
+            template: appName.toLowerCase() + '/index.html',
             inject: 'body',
-            chunks: ['vendor', appName]
+            chunks: ['vendor', appName.toLowerCase()]
         }),
         new Clean(['dist'])
         /* ,
@@ -105,7 +107,7 @@ config = {
     progress: true
 };
 
-config['entry'][appName] = ['./' + appName];
+config['entry'][appName.toLowerCase()] = ['./' + appName.toLowerCase()];
 
 config['entry']['vendor'] = require('./dependencies.js');
 
