@@ -12,7 +12,7 @@ class AuthService {
 	}
 
 	login(username, password, callback) {
-		return SERVICES.get(AuthService).$http.post('http://localhost:1234/api/core/login', { username: username, password: password }).then((response) => { callback(response.data); });
+		return SERVICES.get(AuthService).$http.post('http://localhost:4321/api/core/login', { username: username, password: password }).then((response) => { callback(response.data); });
 	}
 
 	hasAccessToRoute(routeToCheck) {

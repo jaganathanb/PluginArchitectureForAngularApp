@@ -7,10 +7,15 @@
     "build-route": "node route-generator.js",
     "build-app": "node node_modules/webpack/bin/webpack.js --colors --progress --config webpack.config.js",
     "test": "karma start karma.config.js",
+<<<<<<< HEAD
     "clean": "rimraf dist coverage plugins/**/dist plugins/**/coverage plugins/**/node_modules",
     "doc": "rimraf doc && node node_modules/jsdoc/jsdoc.js -c conf.json",
     "server": "node start.js",
     "start": "npm run clean && npm run build-route && npm run build-app | npm run server"
+=======
+    "server": "node start.js",
+    "start": "npm run build-route && npm run build-app | npm run server"
+>>>>>>> origin/master
   },
   "keywords": [
     "webpack",
@@ -20,6 +25,9 @@
     "mocha",
     "karma"
   ],
+  "engines": {
+    "node": "4.1.1"
+  },
   "author": "Jaganathan B",
   "license": "MIT",
   "dependencies": {},

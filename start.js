@@ -60,7 +60,7 @@ function getData(url, params) {
 	return data;
 }
 
-var port = process.env.PORT || 1234;
+var port = 4321;
 app.listen(port, function () {
 	console.log("Listening on " + port);
 });
