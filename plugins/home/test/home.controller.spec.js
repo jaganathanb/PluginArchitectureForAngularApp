@@ -1,4 +1,4 @@
-describe('SomeTest', function() {
+describe('SomeTest - Home', function() {
     it('should start with default counter value = 20', function () {
 
     });

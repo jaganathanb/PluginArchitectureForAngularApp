@@ -1,4 +1,14 @@
 /* global angular, require */
+
+/**
+* @summary The Core module
+* @module Core
+* @uses core/config
+* @requires Core.CoreController
+* @desc The Core angular module which is used to bootstrap the application. here we are registering the required controllers, directives,
+* services and other dependent angular modules.
+*/
+
 import configs from './src/configs';
 import CoreController from './src/core.controller';
 import CoreView from './src/directives/core.directive';
@@ -30,4 +40,5 @@ let Core = angular
 	.config(configs.TRANSLATION)
 	.run(configs.RUN);
 
+/** bootstrap the application */
 angular.bootstrap(document.querySelector('html'), [Core.name]);

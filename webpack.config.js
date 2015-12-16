@@ -91,8 +91,7 @@ config = {
             template: './index.html',
             inject: 'body',
             chunks: ['vendor', appName]
-        }),
-        new Clean(['dist'])
+        })
         /* ,
                new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false }),
                new webpack.optimize.DedupePlugin(),

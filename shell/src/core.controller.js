@@ -1,6 +1,15 @@
 const SERVICES = new WeakMap();
-
+/**
+	Class representing a Core Controller.
+	@memberof module:Core
+*/
 class CoreController {
+	/**
+	 * @summary Core Controller
+	 * @desc Creates a Core Controller.
+	 * @param {scope} $scope - The scope.
+	 * @param {location} $location - The location service.
+	 */
 	constructor($scope, $location, $window, $timeout, $route, $translate, authService, localeService, momentService) {
 		SERVICES.set(CoreController, {
 			$scope: $scope,
@@ -16,7 +25,11 @@ class CoreController {
 
 		this.activate();
 	}
-
+	/**
+	 * @summary Activates the controller.
+	 * @function
+	 * @desc The activate function initiates the controller by setting the locales, language from the user profile
+	 */
 	activate() {
 		let services = SERVICES.get(CoreController),
 			settings;
@@ -47,7 +60,11 @@ class CoreController {
 			services.$location.path('/unauthorized');
 		}
 	}
-
+	/**
+	 * @summary Changes the culture.
+	 * @function
+	 * @desc The changeCulture function will chnage the culture/locale based on the selection made by the user on demand
+	 */
 	changeCulture() {
 		let services = SERVICES.get(CoreController),
 			culture = services.localeService.getLocaleSettings().preferredLocale === 'en' ? 'ta' : 'en';
@@ -57,14 +74,18 @@ class CoreController {
 				this.language = services.localeService.getLocaleDisplayName();
 			});
 	}
-
+	/**
+	 * @summary App login.
+	 * @function
+	 * @desc This fucntion logs in you if the provided credentials are correct
+	 */
 	login() {
 		var services = SERVICES.get(CoreController);
 
 		services.authService.login(this.username, this.password, (response) => {
 
 			if (response.success) {
-
+				/** updates the session */
 				services.authService.updateSession({username: this.username, password: this.password});
 
 				services.localeService.setLocales(response.locales, response.preferredLocale);
@@ -99,7 +120,11 @@ class CoreController {
 			}
 		});
 	}
-
+	/**
+	 * @summary navigates the user
+	 * @param  {string} moduleName the module where you would be navigated
+	 * @return {void}  returns nothing
+	 */
 	navigate(moduleName) {
 		let services = SERVICES.get(CoreController);
 
@@ -115,7 +140,11 @@ class CoreController {
 			services.$location.path(moduleName);
 		}
 	}
-
+	/**
+	 * @summary logs you out
+	 * @desc logs you out by clearing the session & reloads the app.
+	 * @return {void} returns nothing
+	 */
 	logout() {
 		let services = SERVICES.get(CoreController);
 		services.authService.clearSession();
