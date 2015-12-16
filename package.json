@@ -7,15 +7,10 @@
     "build-route": "node route-generator.js",
     "build-app": "node node_modules/webpack/bin/webpack.js --colors --progress --config webpack.config.js",
     "test": "karma start karma.config.js",
-<<<<<<< HEAD
     "clean": "rimraf dist coverage plugins/**/dist plugins/**/coverage plugins/**/node_modules",
     "doc": "rimraf doc && node node_modules/jsdoc/jsdoc.js -c conf.json",
     "server": "node start.js",
-    "start": "npm run clean && npm run build-route && npm run build-app | npm run server"
-=======
-    "server": "node start.js",
     "start": "npm run build-route && npm run build-app | npm run server"
->>>>>>> origin/master
   },
   "keywords": [
     "webpack",
@@ -76,7 +71,7 @@
     "istanbul-instrumenter-loader": "^0.1.3",
     "jasmine-core": "^2.4.1",
     "jquery": "^2.1.4",
-    "jsdoc": "git+https://git@github.com/jsdoc3/jsdoc.git",
+    "jsdoc": "^3.4.0",
     "json-loader": "^0.5.3",
     "karma": "^0.13.15",
     "karma-chrome-launcher": "^0.2.2",
