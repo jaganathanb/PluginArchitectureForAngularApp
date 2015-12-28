@@ -2,12 +2,15 @@ var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    Clean = require('clean-webpack-plugin'),
     appName = 'shell',
     config;
 
+process.env.NODE_ENV = 'dev';
+
 config = {
     watch: true,
+    debug: true,
+    devtool: "source-map",
     entry: {
         'en': 'angular-i18n/en.js',
         'ta': 'angular-i18n/ta.js',
@@ -18,7 +21,7 @@ config = {
     output: {
         path: path.join(__dirname, "dist"),
         filename: "[name].js",
-        chunkFilename: "[name].[hash].module.js",
+        chunkFilename: "[name].js",
         publicPath: './'
     },
     eslint: {
@@ -30,8 +33,12 @@ config = {
     module: {
         loaders: [{
             test: /.js?$/,
+            loader: 'ng-annotate',
+            exclude: /(node_modules|route-generator\.js$|dependencies\.js$|start\.js$|test|dist|webpack.karma.config.js$|webpack.dev.config.js$|webpack.prod.config.js$)/
+        }, {
+            test: /.js?$/,
             loader: 'babel-loader',
-            exclude: /(node_modules|route-generator\.js$|dependencies\.js$|start\.js$|test|dist|webpack.karma.config.js$|webpack.config.js$|gulpfile.js$)/,
+            exclude: /(node_modules|route-generator\.js$|dependencies\.js$|start\.js$|test|dist|webpack.karma.config.js$|webpack.prod.config.js$|webpack.dev.config.js$)/,
             query: {
                 presets: ['es2015']
             }
@@ -78,11 +85,9 @@ config = {
             __DEV__: false
         }),
         new webpack.ProvidePlugin({
-            "_": "lodash"
-        }),
-        new webpack.ProvidePlugin({
             $: "jquery",
-            jQuery: "jquery"
+            jQuery: "jquery",
+            "_": "lodash"
         }),
         new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js"),
         new webpack.ContextReplacementPlugin(/^\.\/locale$/, /en|ta/),
@@ -92,10 +97,6 @@ config = {
             inject: 'body',
             chunks: ['vendor', appName]
         })
-        /* ,
-               new webpack.optimize.UglifyJsPlugin({ sourceMap: false, mangle: false }),
-               new webpack.optimize.DedupePlugin(),
-               new webpack.optimize.OccurenceOrderPlugin(true)*/
     ],
     stats: {
         colors: true,

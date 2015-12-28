@@ -1,7 +1,6 @@
 const SERVICES = new WeakMap();
 
 class RouteLoadingIndicator {
-
     constructor($rootScope) {
         this.template = "<div class='col-lg-12' ng-if='core.isRouteLoading'><h3>Loading module... <i class='fa fa-cog fa-spin'></i></h3></div>";
         this.restrict = 'E'
@@ -22,10 +21,12 @@ class RouteLoadingIndicator {
           scope.core.isRouteLoading = false;
         });
     }
-
+    /*@ngInject*/
     static directiveFn($rootScope) {
         return new RouteLoadingIndicator($rootScope);
     }
 }
+
+RouteLoadingIndicator.directiveFn.$inject = ['$rootScope'];
 
 export default RouteLoadingIndicator;

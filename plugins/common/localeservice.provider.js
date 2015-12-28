@@ -8,11 +8,10 @@ let SERVICES = new WeakMap(),
 	cultures = Symbol();
 
 class LocaleService {
-	constructor($translateProvider, DEBUG_MODE, tmhDynamicLocaleProvider) {
+    /*@ngInject*/
+	constructor($translateProvider) {
 		SERVICES.set(LocaleService, {
-			$translateProvider: $translateProvider,
-			DEBUG_MODE: DEBUG_MODE,
-			tmhDynamicLocaleProvider: tmhDynamicLocaleProvider
+			$translateProvider: $translateProvider
 		});
 
 		this[locales] = [];
@@ -26,8 +25,6 @@ class LocaleService {
 		}
 
         //$translateProvider.useSanitizeValueStrategy('sanitize');
-
-		this.$get.$inject = ['$translate', '$rootScope', 'tmhDynamicLocale'];
 	}
 
 	init(localeName) {
@@ -37,11 +34,11 @@ class LocaleService {
 			services.$translateProvider.useMissingTranslationHandlerLog();// warns about missing translates
 		}
 
-        services.$translateProvider.useSanitizeValueStrategy('sanitize');
+        //services.$translateProvider.useSanitizeValueStrategy('sanitize');
 
 		this[currentLocale] = localeName;
 	}
-
+    /*@ngInject*/
 	$get($translate, $rootScope, tmhDynamicLocale) {
 
 		return {
@@ -91,6 +88,6 @@ class LocaleService {
 }
 
 export default angular
-				.module('LocaleService', ['ngSanitize', 'pascalprecht.translate', 'tmh.dynamicLocale'])
+				.module('LocaleService', ['ngSanitize', 'pascalprecht.translate', 'tmh.dynamicLocale', 'AuthService'])
 				.constant('DEBUG_MODE', !1)
 				.provider('localeService', LocaleService);

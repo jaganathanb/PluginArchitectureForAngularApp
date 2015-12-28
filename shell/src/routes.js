@@ -1,11 +1,12 @@
-'@ngInject' 
+/*@ngInject*/ 
 let Routes = function ($routeProvider, $provide) {
 $routeProvider
 .when('/charts',
 { template: require('charts/src/charts.html'),
 controller: 'ChartsController',
 controllerAs:'vm',
-resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
+resolve:  { /*@ngInject*/ 
+ loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer(),path = $location.path().split('/');
  if (authService.hasAccessToRoute(path[path.length-1]) || false) {
  require.ensure([], function () { 
@@ -24,7 +25,8 @@ defered.resolve();
 { template: require('home/src/home.html'),
 controller: 'HomeController',
 controllerAs:'vm',
-resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
+resolve:  { /*@ngInject*/ 
+ loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer(),path = $location.path().split('/');
  if (authService.hasAccessToRoute(path[path.length-1]) || false) {
  require.ensure([], function () { 
@@ -38,12 +40,13 @@ defered.resolve();
  return defered.promise; 
  }] } 
 })
-
+.when('/', { redirectTo: '/home' })
 .when('/locale',
 { template: require('locale/src/locale.html'),
 controller: 'LocaleController',
 controllerAs:'vm',
-resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
+resolve:  { /*@ngInject*/ 
+ loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer(),path = $location.path().split('/');
  if (authService.hasAccessToRoute(path[path.length-1]) || false) {
  require.ensure([], function () { 
@@ -62,7 +65,8 @@ defered.resolve();
 { template: require('unauthorized/src/unauthorized.html'),
 controller: 'UnauthorizedController',
 controllerAs:'vm',
-resolve:  { loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
+resolve:  { /*@ngInject*/ 
+ loadHomeModule: ['$q', 'authService', 'moduleProvider', '$location', function ($q, authService, moduleProvider, $location) {
 var defered = $q.defer(),path = $location.path().split('/');
  if (authService.hasAccessToRoute(path[path.length-1]) || false) {
  require.ensure([], function () { 
@@ -77,5 +81,5 @@ defered.resolve();
  }] } 
 })
 .otherwise({redirectTo: '/unauthorized'}); 
-'@ngInject'
+/*@ngInject*/
 $provide.decorator("$exceptionHandler", function($delegate, $injector) { return function(exception, cause) { /* eslint-disable no-constant-condition */if (false)  { $delegate(exception, cause); }/* eslint-enable no-constant-condition */$injector.get('toaster').pop({ type: 'error', title: exception.name, body: exception.message, showCloseButton: true}); };});};Routes.$inject = ['$routeProvider', '$provide'];export default Routes; 

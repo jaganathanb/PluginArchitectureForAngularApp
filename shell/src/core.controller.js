@@ -10,6 +10,7 @@ class CoreController {
 	 * @param {scope} $scope - The scope.
 	 * @param {location} $location - The location service.
 	 */
+	/*@ngInject*/
 	constructor($scope, $location, $window, $timeout, $route, $translate, authService, localeService, momentService) {
 		SERVICES.set(CoreController, {
 			$scope: $scope,
@@ -151,7 +152,5 @@ class CoreController {
 		services.$window.location.reload();
 	}
 }
-
-CoreController.$inject = ['$scope', '$location', '$window', '$timeout', '$route', '$translate', 'authService', 'localeService', 'momentService'];
 
 export default CoreController;

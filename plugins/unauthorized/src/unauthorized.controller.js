@@ -2,6 +2,7 @@
 const SERVICES = new WeakMap();
 
 class UnauthorizedController {
+    /*@ngInject*/
   constructor($scope, $translate, localeService, $location) {
     SERVICES.set(UnauthorizedController, {
       $scope: $scope,
@@ -9,7 +10,7 @@ class UnauthorizedController {
       localeService: localeService,
       $location: $location
     });
-    
+
     if (__DEV__) {
       localeService.setLocales({'en': 'English', 'ta': 'தமிழ்', 'kn': 'ಕನ್ನಡ', 'zh': '中文', 'de': 'Deutsche' }, 'ta');
     }
@@ -26,7 +27,5 @@ class UnauthorizedController {
   }
 
 }
-
-UnauthorizedController.$inject = ['$scope', '$translate', 'localeService', '$location'];
 
 export default UnauthorizedController;

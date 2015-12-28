@@ -7,7 +7,7 @@ var fs = require('fs'),
     routeStream = fs.createWriteStream(base + appName + sourcePath + '/routes.js'),
     modulesStream = fs.createWriteStream(base + appName + '/modules.json'),
     modules = [],
-    content = '\'@ngInject\' \nlet Routes = function ($routeProvider, $provide) {' +
+    content = '/*@ngInject*/ \nlet Routes = function ($routeProvider, $provide) {' +
     '\n$routeProvider';
 
 glob(base + 'plugins/**/module.json', {}, function(err, fileNames) {
@@ -22,7 +22,7 @@ glob(base + 'plugins/**/module.json', {}, function(err, fileNames) {
     }
 
     content += '.otherwise({redirectTo: \'/unauthorized\'}); ' +
-        '\n\'@ngInject\'\n$provide.decorator("$exceptionHandler", function($delegate, $injector) { ' +
+        '\n/*@ngInject*/\n$provide.decorator("$exceptionHandler", function($delegate, $injector) { ' +
         'return function(exception, cause) { ' +
         '/* eslint-disable no-constant-condition */' +
         'if (' + __DEV__ + ')  { $delegate(exception, cause); }' +
@@ -58,7 +58,7 @@ function getRoutesJSFile(json) {
                 'controllerAs:\'' + route.controllerAs + '\'';
 
             if (route.lazyLoad) {
-                jsFileContent += ',\nresolve:  { loadHomeModule: [\'$q\', \'authService\', \'moduleProvider\', \'$location\', function ($q, authService, moduleProvider, $location) {\n' +
+                jsFileContent += ',\nresolve:  { /*@ngInject*/ \n loadHomeModule: [\'$q\', \'authService\', \'moduleProvider\', \'$location\', function ($q, authService, moduleProvider, $location) {\n' +
                     'var defered = $q.defer(),' +
                     'path = $location.path().split(\'/\');\n ' +
                     'if (authService.hasAccessToRoute(path[path.length-1]) || ' + route.isPublic +  ') {\n ' +

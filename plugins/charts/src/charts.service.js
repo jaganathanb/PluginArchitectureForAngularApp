@@ -1,6 +1,7 @@
 const SERVICES = new WeakMap();
 
 class ChartsService {
+	/*@ngInject*/
 	constructor(d3Service, $translate) {
 		SERVICES.set(ChartsService, {
             d3 : d3Service,
@@ -161,7 +162,5 @@ class ChartsService {
     return chart;
     }
 }
-
-ChartsService.$inject = ['d3Service', '$translate'];
 
 export default ChartsService;

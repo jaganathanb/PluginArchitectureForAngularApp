@@ -18,8 +18,13 @@ var Charts = angular
 	.service('chartsService', ChartsService)
 	.service('d3Service', () => { return window.d3; })
 	.directive('barChart', BarChart.directiveFn)
+	/*@ngInject*/
 	.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
-		tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
+		if(process.env.NODE_ENV === 'production') {
+	tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.culture.js');
+	}else{
+	tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
+	}
 	}])
 	.config(Routes);
 

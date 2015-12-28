@@ -1,30 +1,22 @@
 {
-    "name": "Home",
+    "name": "Shell",
     "namespace": "Core",
     "routes": [
         {
             "url": "/",
-            "controller": "HomeController",
+            "controller": "CoreController",
             "controllerAs": "vm",
             "lazyLoad": false,
             "isPublic": false,
             "isDev": true
-        },
-        {
-            "url": "/home",
-            "controller": "HomeController",
-            "controllerAs": "vm",
-            "lazyLoad": true,
-            "isPublic": false,
-            "isDefault": true
         }
     ],
     "menus": [
         {
-            "title": "CORE.DASHBOARD.NAVIGATION.HOME",
-            "url": "home",
-            "tooltip": "Click here for home screen",
-            "class": "glyphicon glyphicon-home",
+            "title": "CORE.DASHBOARD.NAVIGATION.CHARTS",
+            "url": "charts",
+            "tooltip": "Click here for charts screen",
+            "class": "glyphicon glyphicon-picture",
             "active": false
         }
     ],

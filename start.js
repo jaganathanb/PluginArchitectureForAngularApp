@@ -1,6 +1,8 @@
 
-var express = require("express");
+var express = require('express');
 var app = express();
+
+app.set('port', (process.env.PORT || 1234));
 
 var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -60,7 +62,6 @@ function getData(url, params) {
 	return data;
 }
 
-var port = 4321;
-app.listen(port, function () {
-	console.log("Listening on " + port);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });

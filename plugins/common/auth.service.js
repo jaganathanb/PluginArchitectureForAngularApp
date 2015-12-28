@@ -3,6 +3,7 @@
 const SERVICES = new WeakMap();
 
 class AuthService {
+	/*@ngInject*/
 	constructor($http, $cookieStore, $timeout) {
 		SERVICES.set(AuthService, {
 			$http: $http,
@@ -12,7 +13,7 @@ class AuthService {
 	}
 
 	login(username, password, callback) {
-		return SERVICES.get(AuthService).$http.post('http://localhost:4321/api/core/login', { username: username, password: password }).then((response) => { callback(response.data); });
+		return SERVICES.get(AuthService).$http.post('/api/core/login', { username: username, password: password }).then((response) => { callback(response.data); });
 	}
 
 	hasAccessToRoute(routeToCheck) {
@@ -27,7 +28,7 @@ class AuthService {
 
 	getModules() {
 		let services = SERVICES.get(AuthService);
-		return services.$http.get('http://localhost:1234/api/core/modules').then((response) => {
+		return services.$http.get('/api/core/modules').then((response) => {
 			let menuItems = [];
 			for (var index = 0; index < response.data.length; index++) {
 				for (var j = 0; j < response.data[index].menus.length; j++) {
@@ -53,8 +54,6 @@ class AuthService {
     }
 
 }
-
-AuthService.$inject = ['$http', '$cookieStore', '$timeout'];
 
 export default angular
 				.module('AuthService', ['ngCookies'])

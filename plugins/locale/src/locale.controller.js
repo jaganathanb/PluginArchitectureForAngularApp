@@ -3,6 +3,7 @@
 const SERVICES = new WeakMap();
 
 class LocaleController {
+    /*@ngInject*/
   constructor($scope, $translate, localeService) {
     this.usageDetails = [];
 
@@ -52,7 +53,5 @@ class LocaleController {
   }
 
 }
-
-LocaleController.$inject = ['$scope', '$translate', 'localeService'];
 
 export default LocaleController;

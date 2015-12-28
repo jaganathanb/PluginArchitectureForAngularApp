@@ -2,7 +2,7 @@
 const SERVICES = new WeakMap();
 
 class CoreView {
-
+    /*@ngInject*/
     constructor($compile, authService) {
         this.template = '<div>Welcome!!</div>';
         this.scope = true;
@@ -31,10 +31,12 @@ class CoreView {
             this.viewUpdated =  !this.viewUpdated;
         });
     }
-
+    /*@ngInject*/
     static directiveFn($compile, authService) {
         return new CoreView($compile, authService);
     }
 }
+
+CoreView.directiveFn.$inject = ['$compile', 'authService'];
 
 export default CoreView;

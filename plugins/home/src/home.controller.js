@@ -2,6 +2,7 @@
 const SERVICES = new WeakMap();
 
 class HomeController {
+    /*@ngInject*/
   constructor($scope, $translate, localeService, homeService) {
     SERVICES.set(HomeController, {
       $scope: $scope,
@@ -9,7 +10,7 @@ class HomeController {
       localeService: localeService,
       homeService: homeService
     });
-    
+
     if (__DEV__) {
       localeService.setLocales({'en': 'English', 'ta': 'தமிழ்', 'kn': 'ಕನ್ನಡ', 'zh': '中文', 'de': 'Deutsche' }, 'ta');
     }
@@ -20,18 +21,16 @@ class HomeController {
       this.activate();
     });
   }
-  
-  activate() {       
+
+  activate() {
     this.getUsageDetails();
   }
-  
+
   getUsageDetails() {
     SERVICES.get(HomeController).homeService.getUsageDetaills().then((data) => {
       this.usages = data.usage;
     });
   }
 }
-
-HomeController.$inject = ['$scope', '$translate', 'localeService', 'homeService'];
 
 export default HomeController;

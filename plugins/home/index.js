@@ -17,7 +17,11 @@ var Home = angular
 			.controller('HomeController', HomeController)
 			.service('homeService', HomeService)
 			.config(['localeServiceProvider', 'tmhDynamicLocaleProvider', (localeServiceProvider, tmhDynamicLocaleProvider) => {
-				tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
+				if(process.env.NODE_ENV === 'production') {
+	tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.culture.js');
+	}else{
+	tmhDynamicLocaleProvider.localeLocationPattern('{{locale}}.js');
+	}
 			}])
 			.config(Routes);
 

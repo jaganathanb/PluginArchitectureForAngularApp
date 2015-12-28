@@ -1,7 +1,7 @@
 const SERVICES = new WeakMap();
 
 class BarChart {
-
+    /*@ngInject*/
     constructor($compile, $rootScope, $translate, d3Service, chartsService) {
         this.template = '<div class="chart"></div>';
         this.scope = {
@@ -66,5 +66,7 @@ class BarChart {
         return new BarChart($compile, $rootScope, $translate, d3Service, chartsService);
     }
 }
+
+BarChart.directiveFn.$inject = ['$compile', '$rootScope', '$translate', 'd3Service', 'chartsService']
 
 export default BarChart;
