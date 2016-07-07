@@ -1,0 +1,6 @@
+{
+  "name": "Pluginarchitectureforangularapp",
+  "tagline": "An demo application to use webpack, angular and es6 with babeljs",
+  "body": "# Plugin Architecture For Angular Application\r\nA demo application to implement the plugin architecture with Single Page Application (angular js) by using webpack, angular, es6 with babeljs.\r\n\r\nTODO: Have to add usage steps..\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
